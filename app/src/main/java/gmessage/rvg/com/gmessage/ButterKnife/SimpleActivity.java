@@ -1,8 +1,6 @@
 package gmessage.rvg.com.gmessage.ButterKnife;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -63,7 +61,6 @@ public class SimpleActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.simple_activity);
     ButterKnife.inject(this);
-
     // Contrived code to use the "injected" views.
     title.setText("Butter Knife");
     subtitle.setText("View \"injection\" for Android.");
