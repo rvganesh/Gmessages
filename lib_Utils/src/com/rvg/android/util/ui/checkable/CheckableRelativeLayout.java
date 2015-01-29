@@ -1,0 +1,89 @@
+package com.rvg.android.util.ui.checkable;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.widget.Checkable;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+
+/**
+ * A special variation of RelativeLayout that can be used as a checkable object.
+ * This allows it to be used as the top-level view of a list view item, which
+ * also supports checking. Otherwise, it works identically to a RelativeLayout.
+ * Note: this was taken from the Android Open Source Project (platform/packages/apps/music/src/com/android/music/CheckableRelativeLayout.java).
+ */
+public class CheckableRelativeLayout extends RelativeLayout implements Checkable {
+    private boolean mChecked;
+    private OnCheckedChangeListener mOnCheckedChangeListener;
+    private volatile boolean mBroadcasting;
+
+    private static final int[] CHECKED_STATE_SET = { android.R.attr.state_checked };
+
+    public CheckableRelativeLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void setChecked(boolean checked) {
+        setChecked(checked, true);
+    }
+
+    public void setChecked(boolean checked, boolean notifyListener) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+
+            if (mBroadcasting) {
+                // Avoid infinite recursions if setChecked() is called from a listener
+                return;
+            }
+
+            if (notifyListener && mOnCheckedChangeListener != null) {
+                // XXX Normally we would pass this view as the first argument, unfortunately
+                // the OnCheckedChangeListener interface wants a CompoundButton here :(
+                // Pass null instead.
+
+                mBroadcasting = true;
+
+                mOnCheckedChangeListener.onCheckedChanged(null, mChecked);
+
+                mBroadcasting = false;
+            }
+        }
+    }
+
+    @Override
+    public boolean performClick() {
+        if (isClickable()) toggle();
+        return super.performClick();
+    }
+
+    /**
+     * Register a callback to be invoked when the checked state of this button
+     * changes.
+     * 
+     * @param listener the callback to call on checked state change
+     */
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        mOnCheckedChangeListener = listener;
+    }
+}

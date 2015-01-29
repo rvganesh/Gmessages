@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="common_pleaseWait" tools:ignore="MissingTranslation">Please wait…</string>
+
+    <!-- Phrase describing a time duration using seconds [CHAR LIMIT=16] -->
+    <plurals name="duration_seconds">
+        <item quantity="one">1 second</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> seconds</item>
+    </plurals>
+    <!-- Phrase describing a time duration using minutes [CHAR LIMIT=16] -->
+    <plurals name="duration_minutes">
+        <item quantity="one">1 minute</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes</item>
+    </plurals>
+    <!-- Phrase describing a time duration using hours [CHAR LIMIT=16] -->
+    <plurals name="duration_hours">
+        <item quantity="one">1 hour</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> hours</item>
+    </plurals>
+
+    <string name="duration_short_hours" translatable="false">%dh</string>
+    <string name="duration_short_minutes" translatable="false">%dm</string>
+    <string name="duration_short_lessThanOneMinute" translatable="false">&lt;1m</string>
+
+    <string name="validation_minLength">This field must be at least %d characters</string>
+    <string name="validation_notEmpty">This field must not be empty</string>
+    <string name="validation_email">This doesn\'t look like a valid email address</string>
+    <string name="validation_url">This doesn\'t look like a valid URL</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="about_action_sendLogs">Send logs</string>
+    <string name="about_sendingLogsToast">Logs are being sent.</string>
+
+    <string name="about_txtTitle" translatable="false"><![CDATA[<b>%1$s</b> v%2$s/%3$s<br/>Built on %4$s<font color="#808080"> – %5$s</font>]]></string>
+    <string name="about_arrow" translatable="false">→</string>
+
+    <string name="about_btnShare">Share app</string>
+    <string name="about_btnRate">Rate app</string>
+    <string name="about_btnOtherApps">Other apps</string>
+    <string name="about_btnDonate">Donate</string>
+
+    <string name="about_shareWith">Share with&#8230;</string>
+    <string name="about_donatePaypalLink" translatable="false"><![CDATA[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BoD%%40JRAF%%2eorg&lc=US&item_name=Donate%%20to%%20BoD&item_number=Donate%%20to%%20BoD&no_note=0&currency_code=USD&bn=PP%%2dDonationsBF%%3abtn_donateCC_LG%%2egif%%3aNonHostedGuest%s]]></string>
+
+</resources>

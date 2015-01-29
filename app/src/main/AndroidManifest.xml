@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gmessage.rvg.com.gmessage" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+
+        <!-- Stickyheader Demo -->
+        <activity
+            android:name=".Stickyheader.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <!-- Stickyheader Demo -->
+        <!-- Path view demo -->
+        <activity
+            android:name=".PathView.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".PathView.SecondActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <!-- Path view demo -->
+
+
+        <!-- RecylcerView -->
+        <activity
+            android:name=".RecyclerView.SimpleActivity"
+            android:label="@string/menu_simple" >
+        </activity>
+        <activity
+            android:name=".RecyclerView.PaintActivity"
+            android:label="@string/menu_paint" />
+        <activity
+            android:name=".RecyclerView.ComplexActivity"
+            android:label="@string/menu_complex" />
+        <!-- RecylcerView -->
+
+
+        <!-- TutorialView -->
+        <activity
+            android:name=".Tutoriralview.MainActivity"
+            android:label="@string/menu_simple" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.rvg.tutorialview.TutorialActivity"
+            android:theme="@style/TutorialActivityTheme" />
+        <!-- TutorialView -->
+
+
+        <!-- ButterKnife -->
+        <activity
+            android:name=".ButterKnife.SimpleActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ButterKnife.SecondActivity"
+             />
+        <!-- ButterKnife -->
+
+        <receiver
+            android:name=".broadcast.OutgoingCallInterceptor"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter android:priority="1">                                   <!-- 6 -->
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />  <!-- 7 -->
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+
+</manifest>
